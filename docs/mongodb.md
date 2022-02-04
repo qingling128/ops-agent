@@ -1,4 +1,10 @@
-# `mongodb` Logging Receiver
+# Mongodb
+
+<!-- TODO: Add these config options to public docs, publish them and replace the install instruction with the content below.-->
+<!--
+Follow [installation guide](https://cloud.google.com/stackdriver/docs/solutions/agents/ops-agent/third-party/mongodb)
+for instructions to collect logs and metrics from this application using Ops Agent.
+-->
 
 ## Configuration
 
@@ -17,12 +23,13 @@ Example Configuration:
 ```yaml
 logging:
   receivers:
-    mongodb_default:
+    mongodb:
       type: mongodb
   service:
     pipelines:
-      mongo:
-        receivers: [mongodb_default]
+      mongodb:
+        receivers:
+          - mongodb
 ```
 
 ## Logs

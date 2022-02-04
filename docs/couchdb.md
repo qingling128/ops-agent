@@ -1,8 +1,42 @@
 # Couchdb
 
+<!-- TODO: Add these config options to public docs, publish them and replace the install instruction with the content below.-->
+<!--
 Follow [installation guide](https://cloud.google.com/stackdriver/docs/solutions/agents/ops-agent/third-party/couchdb)
 for instructions to collect logs and metrics from this application using Ops Agent.
+-->
 
+The couchdb receiver can retrieve stats from your couchdb server using the `/_node/_local/_stats/couchdb` endpoint.
+
+## Configuration
+
+Following the guide for [Configuring the Ops Agent](https://cloud.google.com/stackdriver/docs/solutions/agents/ops-agent/configuration#file-location), add the required elements for your Couchdb configuration.
+
+To configure a receiver for your Apache web server metrics, specify the following fields:
+
+| Field                 | Default                 | Description                                                                            |
+|-----------------------|-------------------------|----------------------------------------------------------------------------------------|
+| `type`                | required                | Must be `couchdb`.                                                                     |
+| `endpoint`            | `http://localhost:5984` | The url exposed by couchdb                                                             |
+| `username`            | not set by default      | The username used to connect to the server.                                            |
+| `password`            | not set by default      | The password used to connect to the server.                                            |
+| `collection_interval` | `60s`                   | A [time.Duration](https://pkg.go.dev/time#ParseDuration) value, such as `30s` or `5m`. |
+
+Example Configuration:
+
+```yaml
+metrics:
+  receivers:
+    couchdb:
+      type: couchdb
+      username: usr
+      password: pwd
+  service:
+    pipelines:
+      couchdb:
+        receivers:
+          - couchdb
+```
 
 ## Metrics
 

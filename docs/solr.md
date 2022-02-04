@@ -1,4 +1,10 @@
-# `solr` Metrics Receiver
+# Solr
+
+<!-- TODO: Add these config options to public docs, publish them and replace the install instruction with the content below.-->
+<!--
+Follow [installation guide](https://cloud.google.com/stackdriver/docs/solutions/agents/ops-agent/third-party/solr)
+for instructions to collect logs and metrics from this application using Ops Agent.
+-->
 
 The `solr` metrics receiver can fetch stats from a Solr server's Java Virtual Machine (JVM) via [JMX](https://www.oracle.com/java/technologies/javase/javamanagement.html).
 
@@ -24,7 +30,6 @@ metrics:
   receivers:
     solr:
       type: solr
-      collection_interval: 60s
   service:
     pipelines:
       solr:
@@ -38,7 +43,7 @@ The Ops Agent collects the following metrics from Solr.
 Note: Limited metrics will be reported if no cores have been created.
 
 | Metric                                               | Data Type      | Unit        | Labels                         | Description |
-| ---                                                  | ---            | ---         | ---                            | ---         | 
+| ---                                                  | ---            | ---         | ---                            | ---         |
 | workload.googleapis.com/solr.document.count          | Gauge          | documents   | core                           | The total number of indexed documents. |
 | workload.googleapis.com/solr.index.size              | Gauge          | by          | core                           | The total index size. |
 | workload.googleapis.com/solr.request.count           | Cumulative     | queries     | core, type, handler            | The number of queries made. |
