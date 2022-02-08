@@ -50,10 +50,14 @@ func MetricsTransform(metrics ...map[string]interface{}) Component {
 }
 
 // NormalizeSums returns a Component that performs counter normalization.
-func NormalizeSums() Component {
+func NormalizeSums(includeGauges ...string) Component {
+	config := map[string]interface{}{}
+	if len(includeGauges) > 0 {
+		config["include_gauges"] = includeGauges
+	}
 	return Component{
 		Type:   "normalizesums",
-		Config: map[string]interface{}{},
+		Config: config,
 	}
 }
 

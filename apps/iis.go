@@ -78,6 +78,11 @@ func (r MetricsReceiverIis) Pipelines() []otel.Pipeline {
 				),
 				otel.AddPrefix("agent.googleapis.com"),
 			),
+			otel.NormalizeSums(
+				"iis/network/transferred_bytes_count",
+				"iis/new_connection_count",
+				"iis/request_count",
+			),
 		},
 	}}
 }
